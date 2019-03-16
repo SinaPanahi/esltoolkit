@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 	//connection data
 	$servername = "localhost";
