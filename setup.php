@@ -6,16 +6,16 @@
 	Before running the page the information in the auth.php must be checked.
 
 	Warning: The pages also inserts a default username ('root') and password ('root') to the admin table which need to be changed as soon as the website has been set up. These entries can be changed from the admin page of site
-	at: ????????
+	at: 000admin/index.php
 	*/
 
 	//import login information
 	require_once('auth.php');
 
 	//default data for website table
-	$website_name = 		'esltoolkit.com';
+	$website_name = 		'esltoolkit';
 	$website_address = 		'http://localhost/esltoolkit 2.0';
-	$website_author = 		'Sina Panahi';
+	$website_author = 		'Author of the website';
 	$website_description = 	"Description for $website_name";
 	$website_keywords = 	"keywords for $website_name";
 	$website_theme = 		'main.css';
