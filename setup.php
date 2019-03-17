@@ -1,10 +1,11 @@
 <?php
 
-	//connection data
-	$servername = "localhost";
-	$username = "sina";
-	$password = "Moradkandi1";
-	$db = "esltoolkit_2";
+	//login information
+	//The login data must match the one in login.php
+	$servername = 	"localhost";
+	$username = 	"sina";
+	$password = 	"Moradkandi1";
+	$db = 			"esltoolkit_2";
 
 	//default data for website table
 	$website_name = 		'esltoolkit.com';
