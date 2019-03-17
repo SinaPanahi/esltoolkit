@@ -14,7 +14,7 @@
 
 	//default data for website table
 	$website_name = 		'esltoolkit';
-	$website_address = 		'http://localhost/esltoolkit 2.0';
+	$website_address = 		'http://localhost/esltoolkit 2.0/';
 	$website_author = 		'Author of the website';
 	$website_description = 	"Description for $website_name";
 	$website_keywords = 	"keywords for $website_name";
