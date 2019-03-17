@@ -1,11 +1,16 @@
 <?php
 
-	//login information
-	//The login data must match the one in login.php
-	$servername = 	"localhost";
-	$username = 	"sina";
-	$password = 	"Moradkandi1";
-	$db = 			"esltoolkit_2";
+	/*
+	This file sets up the SQL databases and tables used for the site.
+	The file is intended to be run only once when the website has been deployed on the server.
+	Before running the page the information in the auth.php must be checked.
+
+	Warning: The pages also inserts a default username ('root') and password ('root') to the admin table which need to be changed as soon as the website has been set up. These entries can be changed from the admin page of site
+	at: ????????
+	*/
+
+	//import login information
+	require_once('auth.php');
 
 	//default data for website table
 	$website_name = 		'esltoolkit.com';
@@ -17,8 +22,8 @@
 
 	//default data for admin table
 	$salt = 				'ellie';
-	$default_user = 		'Sina Panahi';
-	$default_pass = 		'Sina Panahi';
+	$default_user = 		'root';
+	$default_pass = 		'root';
 	$default_hashed_pass = 	hash('sha512', $default_pass . $salt);
 
 	//create a database for the application
