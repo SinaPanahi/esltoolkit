@@ -1,0 +1,78 @@
+
+
+.footer{
+	display: block;
+	background-color: white;
+	border-radius: 15px 15px 0 0 ;
+	border: 1px #727272 dashed;
+	border-bottom: none;
+	padding: 0 15px;
+	box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.2);
+	clear: both;
+	position: relative;
+	top: 15px;
+
+}
+
+.title{
+	border-style: none none dashed none;
+	margin: 20px 20px;
+	border-width: 1px;
+}
+
+.dedication, .popular, .contact{
+	display: inline-block;
+	width: 33%;
+}
+
+.popular, .contact{
+	float: right;
+}
+
+.footer p{
+	padding: 0 15px;
+}
+
+.dedication img{
+	width: 35%;
+	margin-right: 15px;
+	float: left;	
+}
+
+.popular img{
+	padding-left: 15px;
+	width: 20%;
+	height:  auto;
+}
+
+@media screen and (max-width: 800px){
+
+	.footer{
+		position: relative;
+
+	}
+
+	.dedication img{
+		width: 20%;
+		float: left;
+	}
+
+	.contact{
+		display: none;
+	}
+
+
+	.dedication, .popular, .contact{
+		width: 100%;
+		float: none;
+
+	}
+
+	.popular img{
+		padding-left: 15px;
+		width: 20%;
+		min-width: 50px;
+		max-height: 50px;
+		margin-bottom: 15px;
+	}
+}

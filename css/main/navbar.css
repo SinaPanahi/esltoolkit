@@ -1,0 +1,154 @@
+#navbar{
+	border-radius: 0 0 15px 15px;
+	border: 1px #727272 dashed;
+	border-top: none;
+	-webkit-box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.2);
+	box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.2);
+	background-color: white;
+	height: 70px;
+	z-index: 30;
+}
+
+#brand{
+	display: inline-block;
+	padding: 10px;
+	margin: 0 0 0 30px;
+	font-size: 24px;
+	border: 1px dashed #727272;
+	border-radius: 0 0 15px 15px;
+	border-top: none;
+	transition: .5s;
+}
+
+#brand:hover{
+	background-color: orange;
+	-webkit-box-shadow: 0 0 15px 2px orange;
+	box-shadow: 0 0 15px 2px orange;
+	border-color: white;
+	color: white
+}
+
+#brand:hover a{
+	color: white;
+}
+
+#brand a, #nav a{
+	text-decoration: none;
+	color: #848484;
+}
+
+#nav{
+	display: inline-block;
+	float: right;
+	margin: 0 30px 0 0;
+	background-color: white;
+}
+
+#nav a, #nav div{
+	display: inline-block;
+	font-size: 24px;
+	border: 1px #727272 dashed;
+	border-top: none;
+	border-radius: 0 0 15px 15px;
+	padding: 10px;
+	margin: 0 0 0 10px;
+	text-decoration: none;
+	color: #848484;
+	cursor: pointer;
+	transition: .5s;
+}
+
+#nav a:hover, #nav div:hover, #nav div:hover .drop-down{
+	background-color: purple;
+	-webkit-box-shadow: 0 0 15px 2px purple;
+	box-shadow: 0 0 15px 2px purple;
+	border-color: white;
+	color: white;
+}
+
+#nav div a:hover{
+	background-color: purple;
+	color: white;
+	border-color: white;
+}
+
+
+#nav div #drop-down {
+	transform: scale(0, 0);
+	position: absolute;
+	background-color: white;
+	z-index: 10;
+	padding: 0;
+	margin: 0;
+	border: 1px #727272 dashed;
+	border-radius: 15px;
+	width: 300px;
+	transition: 1s;
+}
+
+
+#nav div:hover #drop-down {
+	transform: scale(1, 1);
+}
+
+#drop-down a:nth-child(odd){
+	display: block;
+	position: relative;
+	right: -1px;
+	border: 1px #727272 dashed;
+	border-right: 1px solid white;
+	border-radius: 15px 0 0 15px;
+	margin: 20px 0 20px 20px;
+	background-color: white;
+
+}
+
+#drop-down a:nth-child(even){
+	display: block;
+	position: relative;
+	left: -1px;
+	border: 1px #727272 dashed;
+	border-left: 1px solid white;
+	border-radius: 0 15px 15px 0;
+	margin: 20px 20px 20px 0 ;
+	background-color: white;
+
+}
+
+@media only screen and (max-width : 800px) {
+	#navbar{
+		background-color: white;
+		height: 70px;
+		z-index: 30;
+		align-items: center;
+		text-align: center;
+		height: auto;
+		padding-bottom: 10px;
+	}
+	#brand{
+		display: block;
+		margin: 0 20px;
+		font-size: 24px;
+		border: none;
+		border-radius: 0;
+		transition: .5s;
+	}
+
+	#nav{
+		display: block;
+		margin: 0 20px;
+		float: none;
+	}
+
+	#nav a, #nav div{
+		display: block;
+		border:none;
+		border-top: 1px #727272 dashed;
+		border-radius: 0px;
+		padding: 10px;
+		margin: 0px;
+		color: #848484;
+		cursor: pointer;
+		transition: .5s;
+	}
+}

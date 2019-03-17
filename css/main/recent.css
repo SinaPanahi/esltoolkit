@@ -1,0 +1,34 @@
+.recent{
+	display: inline-block;
+	background-color: white;
+	border-radius: 15px;
+	border: 1px #727272 dashed;
+	width: 70%;
+	float: right;
+	margin: 15px 0 0 0;
+	padding: 15px;
+	right: 0;
+	font-size: 18px;
+	box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.2);
+}
+
+.recent-post{
+	display: inline-block;
+	background-color: white;
+	border-radius: 15px;
+	border: 1px #727272 dashed;
+	width: 95%;
+	margin: 15px 0 0 0;
+	padding: 15px;
+	right: 0;
+	font-size: 18px;
+	box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.2);
+
+}
+
+.recent-post img{
+	width: 130px;
+	float: left;
+	border-radius: 15px;
+	margin-right: 15px;
+}

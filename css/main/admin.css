@@ -1,0 +1,16 @@
+#auth{
+	background-color: lightgray;
+	width: 70%;
+	margin: auto;
+	border-radius: 15px;
+	padding: 30px;
+	text-align: center;
+}
+
+input{
+	display: block;
+	margin: 10px auto;
+	padding: 10px;
+	text-indent: 10px;
+	width: 40%;
+}

@@ -18,7 +18,7 @@
 	$website_author = 		'Author of the website';
 	$website_description = 	"Description for $website_name";
 	$website_keywords = 	"keywords for $website_name";
-	$website_theme = 		'main.css';
+	$website_css = 		'main.css';
 
 	//default data for admin table
 	$salt = 				'ellie';
@@ -44,7 +44,7 @@
 		author VARCHAR(128) NOT NULL,
 		description MEDIUMTEXT NOT NULL,
 		keywords MEDIUMTEXT NOT NULL,
-		theme VARCHAR(128)
+		css VARCHAR(128)
 	';
 	$query = "CREATE TABLE IF NOT EXISTS website($sub_query)";
 	$result = mysqli_query($conn, $query);
@@ -60,9 +60,9 @@
 	if(!$result){
 		//insert the preliminary data into 'website' table
 		$query = "INSERT INTO website
-			(name, address, author, description, keywords, theme)
+			(name, address, author, description, keywords, css)
 			VALUES
-			('$website_name', '$website_address', '$website_author', '$website_description', '$website_keywords','$website_theme')";
+			('$website_name', '$website_address', '$website_author', '$website_description', '$website_keywords','$website_css')";
 		$result = mysqli_query($conn, $query);
 		if(!$result) echo $conn->error ."<br>";
 		echo "Putting default values into website table...<br>";
