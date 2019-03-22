@@ -26,6 +26,27 @@
 	$default_pass = 		'root';
 	$default_hashed_pass = 	hash('sha512', $default_pass . $salt);
 
+	//default data for games table
+	$default_game_name =			'memory_game';
+	$default_game_description =		'sample desc for memory game';
+	$default_game_keywords =		'sample keywrods for memory game';
+	$default_game_how_to =			'sample how_to for memory game';
+	$default_game_img =				'memory_game.jpg';
+	$default_game_data_format =		'sample data format for memory_game';
+	$default_game_html =			'memory_game.php'; //need to be updated
+	$default_game_js =				'memory_game.js'; 	//need to be updated
+	$default_game_css =				'memory_game.css'; 	//need to be updated
+
+	//default data for memory_game/farm_animals
+	$default_topic_game =			'memory_game';
+	$default_topic_topic =			'farm_animals';
+	$default_topic_data =			'no data yet'; 		//need to add data here
+	$default_topic_description =	'desc for farm animals topic';
+	$default_topic_keywords =		'keywords for farm animals topic';
+	$default_topic_img =			'farm_animals.jpg';
+	$default_topic_high_scores = 	'high scores for farm_animals'; //needs to be updated
+
+
 	//create a database for the application
 	$conn = mysqli_connect($servername, $username, $password);
 	$query = "CREATE DATABASE IF NOT EXISTS $db";
@@ -92,6 +113,36 @@
 	if(!$result) echo $conn->error ."<br>";
 	echo "Creating games table...<br>";
 
+	//check to see if the default data have been put before
+	$query = "SELECT * FROM games";
+	$result = mysqli_query($conn, $query);
+	$result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+	//if there are no default data
+	if(!$result){
+		//create a default game
+		$query = "INSERT INTO games
+		(name, description, keywords, how_to, img, data_format, html, js, css)
+		VALUES
+		(
+		'$default_game_name' ,
+		'$default_game_description',
+		'$default_game_keywords',
+		'$default_game_how_to',
+		'$default_game_img',
+		'$default_game_data_format',
+		'$default_game_html',
+		'$default_game_js',
+		'$default_game_css')
+		";
+		$result = mysqli_query($conn, $query);
+		if(!$result) echo $conn->error ."<br>";
+		echo "Putting default values into games table...<br>";
+	} else{
+		echo "Games table already contains default values...<br>";
+	}
+
+
 	//create topics table
 	$sub_query = '
 		id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -111,6 +162,37 @@
 	$result = mysqli_query($conn, $query);
 	if(!$result) echo $conn->error ."<br>";
 	echo "Creating topics table...<br>";
+
+
+	//create a sample game with default data
+	//check to see if the default data have been put before
+	$query = "SELECT * FROM topics";
+	$result = mysqli_query($conn, $query);
+	$result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+	//if there are no default data
+	if(!$result){
+		//create a default topic
+		$query = "INSERT INTO topics
+		(game, topic, data, description, keywords, img, high_scores)
+		VALUES
+		(
+		'$default_topic_game' ,
+		'$default_topic_topic',
+		'$default_topic_data',
+		'$default_topic_description',
+		'$default_topic_keywords',
+		'$default_topic_img',
+		'$default_topic_high_scores'
+		)
+		";
+		$result = mysqli_query($conn, $query);
+		if(!$result) echo $conn->error ."<br>";
+		echo "Putting default values into topics table...<br>";
+	} else{
+		echo "Topics table already contains default values...<br>";
+	}
+
 
 	//create 'comments' table
 	$sub_query = '

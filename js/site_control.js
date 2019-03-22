@@ -1,1 +1,4 @@
-console.log('site control');
+$(document).ready(function(){
+
+	
+})

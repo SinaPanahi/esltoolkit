@@ -3,7 +3,7 @@
 <?php 
 		$count = count($games);
 		if($count == 0){
-			echo '<div class="card-container">No games have beeen added yet.</div>';
+			echo '<div class="card-container">No games have been added yet.</div>';
 		}
 		for ($i = 0; $i < $count; $i++) { 
 			if($i == 0 || $i%2 == 0){

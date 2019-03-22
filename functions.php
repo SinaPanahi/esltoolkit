@@ -8,6 +8,39 @@
 		return ucwords(str_replace("_", " ", $string));
 	}
 
+	function get_get($conn, $value){
+		return sanitize_MySQL($conn, $_GET[$value]);
+	}
+
+	function get_game($conn, $game){
+		$query = mysqli_query($conn, "SELECT * FROM games WHERE name='$game'");
+		return mysqli_fetch_array($query, MYSQLI_ASSOC);
+	}
+
+	function get_topic($conn, $game, $topic){
+		$query = mysqli_query($conn, "SELECT * FROM topics WHERE game='$game' AND topic='$topic'");
+		return mysqli_fetch_array($query, MYSQLI_ASSOC);
+	}
+
+	function get_all_topics($conn, $game){
+		$query = mysqli_query($conn, "SELECT * FROM topics where game = '$game'");
+		return mysqli_fetch_all($query, MYSQLI_ASSOC);
+	}
+
+	function sanitize_string($var) {
+		$var = stripslashes($var);
+		$var = strip_tags($var);
+		$var = htmlentities($var);
+		return $var;
+	}
+	function sanitize_MySQL($conn, $var) {
+		$var = trim($var);
+		$var = $conn->real_escape_string($var);
+		$var = sanitize_String($var);
+
+		return $var;
+	}
+
 
 	//the $website variable will be used globally
 	$query = "SELECT * FROM website";
