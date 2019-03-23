@@ -1,0 +1,57 @@
+#mg_start{
+	display: none;
+	border-radius: 15px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.6);
+}
+
+#mg_start_button{
+	position: absolute;
+	width: 20%;
+	height: 50px;
+	border-radius: 15px;
+	left: 40%;
+	bottom: 25px;
+	outline: none;
+	border: 2px solid white;
+	font-weight: 700;
+	background-color: red;
+	color: white;
+}
+
+#mg_start_button:hover{
+	background-color: yellow;
+	color: black;
+}
+
+#mg_table{
+	position: relative;
+	width: 80%;
+	margin: 0 auto;
+	top: 20px;
+	background-color: white;
+	text-align: center;
+	border-radius: 15px;
+	border: 1px dashed #727272;
+}
+
+
+@media screen and (max-width: 800px){
+	#mg_table{
+		top:10px;
+		font-size: 12px;
+	}
+
+	#mg_start_button{
+		font-size: 12px;
+		bottom: 10px;
+		height: 35px;
+	}
+
+}
+
+
+

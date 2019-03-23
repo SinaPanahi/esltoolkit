@@ -1,11 +1,9 @@
 body{
 	margin: 0;
 	font-family: 'Roboto', sans-serif;
-	/*
-	background-image: url("../imgs/background.jpg");
+	background-image: url("../../imgs/background.jpg");
 	background-size: cover;
 	background-attachment: fixed;
-	*/
 	color: #848484;
 }
 
@@ -87,10 +85,18 @@ body{
 }
 
 @media screen and (max-width : 800px){
+
+	.body-wrapper{
+		margin: 0 5px;
+	}
 	.content{
 		display: block;
 		width: auto;
 		clear: both;
+	}
+
+	.content img{
+		width: 100%;
 	}
 
 

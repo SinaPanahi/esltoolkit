@@ -14,11 +14,11 @@
 
 	//default data for website table
 	$website_name = 		'esltoolkit';
-	$website_address = 		'http://localhost/esltoolkit 2.0/';
+	$website_address = 		'http://localhost/esltoolkit_2.0/';
 	$website_author = 		'Author of the website';
 	$website_description = 	"Description for $website_name";
 	$website_keywords = 	"keywords for $website_name";
-	$website_css = 		'main.css';
+	$website_css = 			'main.css';
 
 	//default data for admin table
 	$salt = 				'ellie';
@@ -40,12 +40,24 @@
 	//default data for memory_game/farm_animals
 	$default_topic_game =			'memory_game';
 	$default_topic_topic =			'farm_animals';
-	$default_topic_data =			'no data yet'; 		//need to add data here
+	$default_topic_data =			
+	'[
+	["sheep","sheep.png"],
+	["goat","goat.png"],
+	["chicken","chicken.png"],
+	["rooster","rooster.png"],
+	["horse","horse.png"],
+	["cow","cow.png"],
+	["pig","pig.png"],
+	["duck","duck.png"],
+	["donkey","donkey.png"],
+	["dog","dog.png"]
+	]';
 	$default_topic_description =	'desc for farm animals topic';
 	$default_topic_keywords =		'keywords for farm animals topic';
 	$default_topic_img =			'farm_animals.jpg';
-	$default_topic_high_scores = 	'high scores for farm_animals'; //needs to be updated
-
+	$default_topic_high_scores = 	
+		'[["-",0],["-",0],["-",0],["-",0],["-",0],["-",0],["-",0],["-",0],["-",0],["-",0]]'; 
 
 	//create a database for the application
 	$conn = mysqli_connect($servername, $username, $password);
