@@ -9,9 +9,10 @@
 		</div>
 		<?php require_once('games/' . $game['html']); ?>
 		<script type="text/javascript">
-			const DATA = <?php echo $topic['data']; ?>;
-			const HIGH_SCORES = <?php echo $topic['high_scores']; ?>;
-			const BACKGROUND = 
+			let DATA = <?php echo $topic['data']; ?>;
+			let HIGH_SCORES = <?php echo $topic['high_scores']; ?>;
+			let TOPIC = "<?php echo $topic['topic'] ?>";
+			let BACKGROUND = 
 			'<?php echo "imgs/games/".$topic['game']."/".$topic['topic']."/".$topic['img']; ?>';
 		</script>
 		<script type="text/javascript" src= "<?php echo"js/games/". $game['js'];?>" ></script>
