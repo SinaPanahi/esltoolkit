@@ -117,7 +117,7 @@
 		html VARCHAR(128) NOT NULL,
 		js VARCHAR(128) NOT NULL,
 		css VARCHAR(128) NOT NULL,
-		hits INT(6) NOT NULL,
+		hits INT(6) NOT NULL DEFAULT \'0\',
 		INDEX(name(6))
 	';
 	$query = "CREATE TABLE IF NOT EXISTS games($sub_query)";
@@ -164,8 +164,8 @@
 		description MEDIUMTEXT NOT NULL,
 		keywords MEDIUMTEXT NOT NULL,
 		img VARCHAR(128) NOT NULL,
-		high_scores MEDIUMTEXT NOT NULL,
-		hits INT(6) NOT NULL,
+		high_scores VARCHAR(1000) NOT NULL DEFAULT \'[["-",0],["-",0],["-",0],["-",0],["-",0],["-",0],["-",0],["-",0],["-",0],["-",0]]\',
+		hits INT(6) NOT NULL DEFAULT \'0\',
 		date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 		INDEX(game(6)),
 		INDEX(topic(6))
@@ -186,7 +186,7 @@
 	if(!$result){
 		//create a default topic
 		$query = "INSERT INTO topics
-		(game, topic, data, description, keywords, img, high_scores)
+		(game, topic, data, description, keywords, img)
 		VALUES
 		(
 		'$default_topic_game' ,
@@ -194,8 +194,7 @@
 		'$default_topic_data',
 		'$default_topic_description',
 		'$default_topic_keywords',
-		'$default_topic_img',
-		'$default_topic_high_scores'
+		'$default_topic_img'
 		)
 		";
 		$result = mysqli_query($conn, $query);
