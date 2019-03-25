@@ -14,12 +14,12 @@
 
 	function get_game($conn, $game){
 		$query = mysqli_query($conn, "SELECT * FROM games WHERE name='$game'");
-		return mysqli_fetch_array($query, MYSQLI_ASSOC);
+		return mysqli_fetch_all($query, MYSQLI_ASSOC)[0];
 	}
 
 	function get_topic($conn, $game, $topic){
 		$query = mysqli_query($conn, "SELECT * FROM topics WHERE game='$game' AND topic='$topic'");
-		return mysqli_fetch_array($query, MYSQLI_ASSOC);
+		return mysqli_fetch_all($query, MYSQLI_ASSOC)[0];
 	}
 
 	function get_all_topics($conn, $game){
