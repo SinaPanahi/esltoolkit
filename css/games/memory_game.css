@@ -57,6 +57,7 @@
 }
 
 #mg_game{
+	display: none;
 	width: 100%;
 	height: 100%;
 	border-radius: 15px;
@@ -140,7 +141,7 @@
 }
 
 .mg_item > *{
-	opacity: 0;
+	display: none;
 }
 
 .mg_item img{
@@ -154,6 +155,17 @@
 	width: 100%;
 	height: 100%;
 	margin: 20px 0;
+}
+
+#mg_block{
+	position: absolute;
+	display: none;
+	left: 0;
+	top:0;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	border-radius: 15px;
 }
 
 

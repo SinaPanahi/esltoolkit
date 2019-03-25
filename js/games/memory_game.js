@@ -7,8 +7,8 @@ $(document).ready(function(){
 	function init(){
 		setBackground();
 		prepareOptions();
-		//showStartScreen();
-		startGame();
+		showStartScreen();
+		
 	}
 
 	function setBackground(){
@@ -24,7 +24,6 @@ $(document).ready(function(){
 				} else{
 					$(this).children(":first").attr('src', 'imgs/no_music.png');
 				}
-				console.log("music: " + $(this).data('music'));
 			}
 		);
 
@@ -36,7 +35,6 @@ $(document).ready(function(){
 				} else{
 					$(this).children(":first").attr('src', 'imgs/no_speech.png');
 				}
-				console.log("speech: " + $(this).data('speech'));
 			}
 		);
 
@@ -54,7 +52,6 @@ $(document).ready(function(){
 					$(this).data('picture', 'pt')
 					.children(":first").attr('src', 'imgs/text_picture.png');
 				}
-				console.log("picture: " + $(this).data('picture'));
 			}
 		);
 	}
@@ -70,16 +67,18 @@ $(document).ready(function(){
 		$('#mg_start_button').click(function(){
 			$('#mg_start').slideUp('fast');
 			$(this).hide();	
+			startGame();
 		});
 	}
 
 	function startGame(){
 		let allItems = [];
+		setTimeout(function(){$('#mg_game').css({display : 'block'});},100);
 		for (var i = 0; i < DATA.length; i++) {
 			let img = $('<img src="imgs/games/memory_game/' + TOPIC + '/' + DATA[i][1] + '">');
 			let p = $('<p>'+DATA[i][0]+'</p>');
-			allItems.push($('<div class="mg_item">').append(img.clone()).append(p.clone()).data('word',DATA[i][0]).data("type", "p"));
-			allItems.push($('<div class="mg_item">').append(img.clone()).append(p.clone()).data('word',DATA[i][0]).data("type", "t"));
+			allItems.push($('<div class="mg_item">').append(img.clone()).append(p.clone()).data('word',DATA[i][0]).data("type", "p").data('code', Math.floor(Math.random()*1000000)));
+			allItems.push($('<div class="mg_item">').append(img.clone()).append(p.clone()).data('word',DATA[i][0]).data("type", "t").data('code', Math.floor(Math.random()*1000000)));
 		}
 		shuffle(allItems);
 		for (var i = 0; i < allItems.length; i++) {
@@ -89,26 +88,82 @@ $(document).ready(function(){
 
 	function turn(){
 		$(this).css({animation: "1s turn forwards"});
+		if($('#mg_speech_button').data('speech')){ speak($(this).data('word')); }
 		setTimeout(showContent, 800, $(this));
+		if(turned[0] !== undefined && turned[0].data('code') == $(this).data('code')) return;
+		turned.push($(this));
+		if(turned.length == 2) checkAnswer();
+
 		function showContent(el){
-			el.children().animate({opacity: 1});
-		}
-		if($('#mg_speech_button').data('speech')){
-			speak($(this).data('word'));
+			if($('#mg_picture_button').data('picture') == 'pt'){
+				if(el.data('type') == 'p'){
+					el.children(':first').css({display: 'block'});
+				}
+				else{
+					el.children(':eq(1)').css({display: 'block'});
+				}
+			}
+			else if($('#mg_picture_button').data('picture') == 'p'){
+				el.children(':first').css({display: 'block'});
+			}
+			else if($('#mg_picture_button').data('picture') == 't'){
+				el.children(':eq(1)').css({display: 'block'});
+			}
 		}
 	}
 
-	function checkAnswer(){
+	function unturn(el1, el2, millis){
+		setTimeout(function(){
+			$(el1).css({animation: "1s unturn forwards"});
+			$(el2).css({animation: "1s unturn forwards"});
+			setTimeout(function(){
+				$(el1).children().css({display: 'none'});
+				$(el2).children().css({display: 'none'});
+			}, millis/2);
+		}, millis);
+	}
 
+	function playsSound(which){
+		var sound = new Audio();
+		sound.src = "sounds/" + which +".mp3";
+		setTimeout(function(){sound.play();},500);
+	}
+
+	function removeItems(el1, el2, delay){
+		setTimeout(function(){
+			$(el1).animate({opacity: 0}).off();
+			$(el2).animate({opacity: 0}).off();
+		}, delay);
+	}
+
+	function block(millis){
+		$('#mg_block').css({display: 'block'});
+		setTimeout(function(){
+			$('#mg_block').css({display: 'none'});
+		}, millis);
+	}
+
+	let score = (function () {
+		var counter = 0;
+		return function () {counter += 1000; console.log(counter); return counter}
+	})();
+
+	function checkAnswer(arr){
+		if(turned[0].data('word') == turned[1].data('word')){
+			score();
+			if($('#mg_music_button').data('music')) playsSound('correct');
+			removeItems(turned[0], turned[1], 1500);
+		}
+		else{
+			block(1000);
+			unturn(turned[0], turned[1], 1000);
+		}
+		turned = [];
 	}
 
 
-	function shuffle(a) {
-	    for (let i = a.length - 1; i > 0; i--) {
-	        const j = Math.floor(Math.random() * (i + 1));
-	        [a[i], a[j]] = [a[j], a[i]];
-	    }
-	    return a;
+	function shuffle(array) {
+	  	array.sort(() => Math.random() - 0.5);
 	}
 
 	function speak(word){
