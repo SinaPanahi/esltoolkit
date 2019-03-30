@@ -27,7 +27,6 @@
 	</div>
 </div> 
 <!--FOOTER END-->
-
 </div>
 <!--BODY_WRAPPER END-->
 </body>

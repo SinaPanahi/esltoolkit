@@ -6,14 +6,14 @@
 		$game = sanitize_MySQL($conn, $_POST['game']);
 		$topic = sanitize_MySQL($conn, $_POST['topic']);
 		$highScores = $_POST['score'];
-	} elseif (isset($_POST['isPartial']) && $_POST['isPartial'] == 'false'){
+	} else if (isset($_POST['isPartial']) && $_POST['isPartial'] == 'false'){
 		$game = sanitize_MySQL($conn, $_POST['game']);
 		$topic = sanitize_MySQL($conn, $_POST['topic']);
 		$name = sanitize_MySQL($conn, $_POST['name']);
 		$highScores = json_decode($_POST['score']);
 		for ($i=0; $i < count($highScores); $i++) { 
 			if ($highScores[$i][0] == 'name_here') {
-				$highScores[$i][0] = $name;
+				$highScores[$i][0] = str_replace(' ', '_', $name) ;
 				$highScores = json_encode($highScores);
 				$qString = "UPDATE topics SET high_scores = '$highScores'
 					WHERE game = '$game' AND topic = '$topic'";
@@ -21,6 +21,7 @@
 				if($result){
 					header("location: ../game.php?game=$game&topic=$topic");
 				}
+				return;
 			}
 		}
 	}

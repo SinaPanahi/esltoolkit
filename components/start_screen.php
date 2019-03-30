@@ -10,7 +10,7 @@
 				$high_scores = json_decode($_POST['high_scores']);
 				$count = count($high_scores);
 				for ($i=0; $i < $count; $i++) { 
-					echo '<tr><td>'.$high_scores[$i][0].'</td><td>'.$high_scores[$i][1].'</td></tr>';
+					echo '<tr><td>'.str_replace('_', ' ', $high_scores[$i][0]).'</td><td>'.$high_scores[$i][1].'</td></tr>';
 				}
 				?>
 			</tr>

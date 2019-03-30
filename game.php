@@ -15,5 +15,6 @@
 	require_once('components/head.php');
 	require_once('components/navbar.php');
 	require_once('components/game.php');
+	require_once('components/comments.php');
 	require_once('components/footer.php');	
 ?>

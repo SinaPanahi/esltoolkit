@@ -71,7 +71,6 @@ $(document).ready(function(){
 	function init(){
 		setBackground();
 		showStartScreen();	
-		endGame();	
 	}
 
 	function setBackground(){
@@ -79,7 +78,6 @@ $(document).ready(function(){
 	}
 
 	function prepareOptions(){
-
 		if(!Cookies.get('mg_music'))   Cookies.set('mg_music', 'true', {expires: 30});
 		if(!Cookies.get('mg_speech'))  Cookies.set('mg_speech', 'true', {expires: 30});
 		if(!Cookies.get('mg_picture')) Cookies.set('mg_picture', 'pt', {expires: 30});
@@ -181,7 +179,7 @@ $(document).ready(function(){
 			block(1000);
 			checkAnswer(turned.get(0), turned.get(1));
 			updateAttempts(attempts.get());
-			if(answered.get() == 1) endGame();//
+			if(answered.get() == 10) endGame();
 			turned.reset();
 		}
 	}
@@ -230,38 +228,35 @@ $(document).ready(function(){
 		let finalScore = 10000 - (timer.get()*10) - (attempts.get()*100);
 		let isHighScore = false;
 		for (var i = 0; i < game.highScores.length; i++) {
-			if(finalScore >= game.highScores[i]){
+			if(finalScore >= game.highScores[i][1]){
+				game.highScores.splice(i, 0, ["name_here", finalScore]);
+				game.highScores.pop();
 				isHighScore = true;
 				break;
 			}
 		}
-
 		setTimeout(function(){
-			$.ajax({
-				url: 'components/end_game.php',
-				type: 'POST',
-				data: 'final_score='+finalScore+'&isHighScore='+isHighScore+'game=memory_game&topic='+game.topic,
-				success: function(result){
-					$('#game_area').html(result);
-				}
-			});
-		}, 1500);
-		
-		for (var i = 1000; i < game.highScores.length; i++) {
-			if(finalScore >= game.highScores[i][1]){
-				game.highScores.splice(i, 0, ["name_here", finalScore]);
-				game.highScores.pop();
+			if(isHighScore){
 				$.ajax({
 					url: 'components/high_scores.php',
 					type: 'POST',
-					data: 'game=memory_game&topic='+TOPIC+'&isPartial=true&score='+JSON.stringify(game.highScores),
+					data: 'game=memory_game&topic='+game.topic+'&isPartial=true&score='+JSON.stringify(game.highScores),
 					success: function(result){
 						$('#game_area').html(result);
 					}
 				});
-				return;
-			}
-		}
+				
+			} else{
+				$.ajax({
+					url: 'components/end_game.php',
+					type: 'POST',
+					data: 'final_score='+finalScore+'&game=memory_game&topic='+game.topic,
+					success: function(result){
+						$('#game_area').html(result);
+					}
+				});
+			}			
+		}, 1500);
 	}
 
 	function unturn(el1, el2, millis){
@@ -281,8 +276,6 @@ $(document).ready(function(){
 			$('#mg_block').css({display: 'none'});
 		}, millis);
 	}
-	
-
 
 	function shuffle(array) {
 	  	array.sort(() => Math.random() - 0.5);
@@ -299,7 +292,4 @@ $(document).ready(function(){
 		    window.speechSynthesis.speak(msg);
 		}
 	}
-
-
-
 });

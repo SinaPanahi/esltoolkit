@@ -11,7 +11,6 @@
 	</div>
 	<div id="mg_game_board"></div>
 </div>
-
 <div id="mg_block"></div>
 
 
