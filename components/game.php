@@ -7,17 +7,16 @@
 		<div id="screen">
 			<p>Please, rotate your screen to play this game.</p>
 		</div>
-		<?php require_once('games/' . $game['html']); ?>
 		<script type="text/javascript">
-			let DATA = <?php echo $topic['data']; ?>;
-			let HIGH_SCORES = <?php echo $topic['high_scores']; ?>;
-			let TOPIC = "<?php echo $topic['topic'] ?>";
-			let BACKGROUND = 
-			'<?php echo "imgs/games/".$topic['game']."/".$topic['topic']."/".$topic['img']; ?>';
+			let game = {
+				data: <?php echo $topic['data']; ?>,
+				highScores: <?php echo $topic['high_scores']; ?>,
+				topic: "<?php echo $topic['topic']; ?>",
+				background: "<?php echo "imgs/games/".$topic['game']."/".$topic['topic']."/".$topic['img']; ?>"
+			}
 		</script>
-		<script type="text/javascript" src= "<?php echo"js/games/". $game['js'];?>" ></script>
-		<link rel="stylesheet" type="text/css" href="<?php echo "css/games/". $game['css'];?>">
 	</div>
+	<script type="text/javascript" src= "<?php echo"js/games/". $game['js'];?>" ></script>
 	<!-------------------------------------------------------------------->
 	<h2>About This Game</h2>
 	<p><?php  echo $topic['description'] ;?></p>

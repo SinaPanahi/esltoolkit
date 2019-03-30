@@ -1,0 +1,44 @@
+#end_game{
+	width: 70%;
+	height: 70%;
+	margin: 20px auto;
+	background-color: white;
+	border: 1px dashed #727272;
+	border-radius: 15px;
+	text-align: center;
+}
+
+#end_game p{
+	font-size: 24px;
+	margin: 10px auto;
+	padding: 10px;
+}
+
+#end_game h2{
+	font-size: 24px;
+	width: 90%;
+	box-shadow: none;
+	background-color: white;
+	color: black;
+	text-decoration: underline;
+}
+
+#end_game a{
+	font-size: 24px;
+	text-decoration: none;
+	color: white;
+	display: block;
+	background-color: red;
+	width: 200px;
+	height: 40px;
+	line-height: 40px;
+	border: 2px solid white;
+	margin: 0 auto;
+	border-radius: 15px;
+}
+
+#end_game a:hover{
+	background-color: yellow;
+	color: red;
+	border-color: red;
+}
