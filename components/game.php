@@ -2,11 +2,7 @@
 <div class="game_content">
 	<h2 class="game_title"><?php echo format_for_site($game['name']) ." (". format_for_site($topic['topic']) .")"; ?></h2>
 	<!-------------------------------------------------------------------->
-	
 	<div class="game_area" id="game_area">
-		<div id="screen">
-			<p>Please, rotate your screen to play this game.</p>
-		</div>
 		<script type="text/javascript">
 			let game = {
 				data: <?php echo $topic['data']; ?>,

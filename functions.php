@@ -12,6 +12,11 @@
 		return sanitize_MySQL($conn, $_GET[$value]);
 	}
 
+	function get_website($conn){
+		$query = "SELECT * FROM website";
+		return mysqli_fetch_all(mysqli_query($conn, $query), MYSQLI_ASSOC)[0];
+	}
+
 	function get_game($conn, $game){
 		$query = mysqli_query($conn, "SELECT * FROM games WHERE name='$game'");
 		return mysqli_fetch_all($query, MYSQLI_ASSOC)[0];
@@ -41,11 +46,13 @@
 		return $var;
 	}
 
+	function show_message($message, $status){
+		$_SESSION['message'] = $message;
+		$_SESSION['status'] = $status;
+	}
 
-	//the $website variable will be used globally
-	$query = "SELECT * FROM website";
-	$website = mysqli_fetch_all(mysqli_query($conn, $query), MYSQLI_ASSOC)[0];
-	if(!$website) die('Could not retrieve data from website table.');
+
+	$website = get_website($conn);
 
 	//the $games variable will be used globally
 	$query = "SELECT * FROM games";
