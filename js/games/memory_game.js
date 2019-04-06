@@ -130,7 +130,7 @@ $(document).ready(function(){
 	function showStartScreen(){
 		$.ajax({
 			type: 'POST',
-			url: 'components/start_screen.php',
+			url: 'components/games/start_screen.php',
 			data: 'high_scores='+JSON.stringify(game.highScores),
 			success : function(result){
 				$('#game_area').html(result);
@@ -238,7 +238,7 @@ $(document).ready(function(){
 		setTimeout(function(){
 			if(isHighScore){
 				$.ajax({
-					url: 'components/high_scores.php',
+					url: 'components/games/high_scores.php',
 					type: 'POST',
 					data: 'game=memory_game&topic='+game.topic+'&isPartial=true&score='+JSON.stringify(game.highScores),
 					success: function(result){
@@ -248,7 +248,7 @@ $(document).ready(function(){
 				
 			} else{
 				$.ajax({
-					url: 'components/end_game.php',
+					url: 'components/games/end_game.php',
 					type: 'POST',
 					data: 'final_score='+finalScore+'&game=memory_game&topic='+game.topic,
 					success: function(result){

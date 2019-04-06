@@ -205,6 +205,10 @@ body{
 	background-color: blue;
 }
 
+.green{
+	background-color: green;
+}
+
 .comment{
 	width: 90%;
 	margin: 10px auto;
@@ -242,4 +246,40 @@ body{
 .button:hover{
 	background-color: yellow;
 	color: black;
+}
+
+.games p{
+	display: inline-block;
+	width: 70%;
+	font-size: 24px;
+	font-weight: 700;
+	color: #727272;
+	margin-left: 30px;
+
+}
+
+.games form{
+	text-align: right;
+	display: inline-block;
+	width: 120px;
+}
+
+.topics p{
+	display: inline-block;
+	width: 55%;
+	font-size: 24px;
+	font-weight: 700;
+	color: #727272;
+	margin-left: 30px;
+
+}
+
+.topics form{
+	text-align: right;
+	display: inline-block;
+	width: 120px;
+}
+
+.text-red{
+	color: red;
 }
