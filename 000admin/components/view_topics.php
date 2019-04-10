@@ -25,13 +25,8 @@
 		<div class="topics">
 			<p><?php echo format_for_Site($topic['topic'] ." - ". $topic['game']); ?></p>
 
-			<form method="get" action="add_topic.php">
-				<input type="hidden" name="game" value="<?php echo $topic['id'] ?>">
-				<input type="submit" value="Add Topic" class="button green">
-			</form>
-
 			<form method="get" action="edit_topic.php">
-				<input type="hidden" name="game" value="<?php echo $topic['id']; ?>">
+				<input type="hidden" name="topic" value="<?php echo $topic['id']; ?>">
 				<input type="submit" value="Edit Topic" class="button blue">
 			</form>
 

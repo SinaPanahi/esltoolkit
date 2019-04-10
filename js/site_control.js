@@ -2,10 +2,12 @@ $(document).ready(function(){
 	setGameAreaDimensions();
 	preventResubmit();
 
+	/*
 	$('#game_area').click(function(){
 		openFullscreen(this);
 	});
 
+	
 	//When the openFullscreen() function is executed, open the video in fullscreen.
 	//Note that we must include prefixes for different browsers, as they don't support the requestFullscreen method yet 
 	function openFullscreen(elem) {
@@ -19,6 +21,8 @@ $(document).ready(function(){
 	    elem.msRequestFullscreen();
 	  }
 	}
+
+	*/
 
 	//this function sets the dimensions of the game area to ~16:9 aspect ratio
 	function setGameAreaDimensions(){

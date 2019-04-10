@@ -7,6 +7,7 @@
 			<button id="mg_music_button"><img src="imgs/music.png"></button>
 			<button id="mg_speech_button"><img src="imgs/speech.png"></button>
 			<button id="mg_picture_button"><img src="imgs/text_picture.png"></button>
+			<button id="mg_full_screen_button"><img src="imgs/full_screen.png"></button>
 		</span>
 	</div>
 	<div id="mg_game_board"></div>

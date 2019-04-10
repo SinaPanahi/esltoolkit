@@ -125,6 +125,38 @@ $(document).ready(function(){
 				else $pictureBtn.children(":first").attr('src', 'imgs/picture.png');	
 			}
 		);
+
+		$('#mg_full_screen_button').click(function(){
+			openFullscreen($('#game_area').get(0));
+		});
+
+
+	
+		function openFullscreen(elem) {
+			if(document.fullscreenElement ||document.mozFullscreenElement || document.webkitFullscreenElement){
+			  	if (document.exitFullscreen) {
+			    	document.exitFullscreen();
+			  	} else if (document.mozCancelFullScreen) { /* Firefox */
+			    	document.mozCancelFullScreen();
+			  	} else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+			    	document.webkitExitFullscreen();
+			  	} else if (document.msExitFullscreen) { /* IE/Edge */
+			    	document.msExitFullscreen();
+			  	}
+			  	return;
+		  	}
+
+			  
+			if (elem.requestFullscreen) {
+			    elem.requestFullscreen();
+			} else if (elem.mozRequestFullScreen) { // Firefox
+			    elem.mozRequestFullScreen();
+			} else if (elem.webkitRequestFullscreen) { // Chrome, Safari and Opera
+			    elem.webkitRequestFullscreen();
+			} else if (elem.msRequestFullscreen) { // IE/Edge
+			    elem.msRequestFullscreen();
+			}
+		}
 	}
 
 	function showStartScreen(){
@@ -235,12 +267,19 @@ $(document).ready(function(){
 				break;
 			}
 		}
+
+		
 		setTimeout(function(){
 			if(isHighScore){
 				$.ajax({
 					url: 'components/games/high_scores.php',
 					type: 'POST',
-					data: 'game=memory_game&topic='+game.topic+'&isPartial=true&score='+JSON.stringify(game.highScores),
+					data: {
+						game: 'memory_game',
+						topic: game.topic,
+						isPartial: true,
+						score: JSON.stringify(game.highScores)
+					},
 					success: function(result){
 						$('#game_area').html(result);
 					}
@@ -250,7 +289,11 @@ $(document).ready(function(){
 				$.ajax({
 					url: 'components/games/end_game.php',
 					type: 'POST',
-					data: 'final_score='+finalScore+'&game=memory_game&topic='+game.topic,
+					data:{
+						final_score: finalScore,
+						game: 'memory_game',
+						topic: game.topic
+					},
 					success: function(result){
 						$('#game_area').html(result);
 					}

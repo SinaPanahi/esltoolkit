@@ -28,7 +28,7 @@
 	}
 
 	function get_all_topics($conn, $game){
-		$query = mysqli_query($conn, "SELECT * FROM topics where game = '$game'");
+		$query = mysqli_query($conn, "SELECT * FROM topics where game = '$game' ORDER BY topic ASC");
 		return mysqli_fetch_all($query, MYSQLI_ASSOC);
 	}
 

@@ -19,9 +19,14 @@
 				<input type="submit" value="View Topics" class="button green">
 			</form>
 
+			<form method="get" action="add_topic.php">
+				<input type="hidden" name="game" value="<?php echo $game['id'] ?>">
+				<input type="submit" value="Add Topic" class="button blue">
+			</form>
+
 			<form method="get" action="edit_game.php">
 				<input type="hidden" name="game" value="<?php echo $game['id']; ?>">
-				<input type="submit" value="Edit Game" class="button blue">
+				<input type="submit" value="Edit Game" class="button red">
 			</form>
 		</div>
 	<?php endforeach; ?>
