@@ -11,7 +11,12 @@
 		}
 	}
 
-	$qString = "SELECT * FROM topics";
+	$id = $_GET['game'];
+	$qString = "SELECT name FROM games WHERE id='$id'";
+	$query = mysqli_query($conn, $qString);
+	$name = mysqli_fetch_all($query, MYSQLI_ASSOC)[0]['name'];
+
+	$qString = "SELECT * FROM topics WHERE game='$name'";
 	$query = mysqli_query($conn, $qString);
 	$result = mysqli_fetch_all($query, MYSQLI_ASSOC);
 

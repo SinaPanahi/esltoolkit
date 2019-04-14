@@ -5,6 +5,7 @@
 	$game = get_game($conn, get_get($conn, 'game'));
 	//get all data for this game
 	$topic = get_topic($conn, $game['name'], get_get($conn, 'topic'));
+	add_hits_to_topic($conn, $topic['game'], $topic['topic']);
 	$page_title = format_for_site($game['name']) . " | " . format_for_site($topic['topic']);
 	$page_desc =		$topic['description'];
 	$page_keywords =	$topic['keywords'];

@@ -51,6 +51,20 @@
 		$_SESSION['status'] = $status;
 	}
 
+	function add_hits_to_topic($conn, $game, $topic){
+		$query = mysqli_query($conn, "SELECT hits FROM topics WHERE game='$game' AND topic='$topic'");
+		$currentHits = mysqli_fetch_all($query, MYSQLI_ASSOC)[0]['hits']; 
+		$newHits = $currentHits+1;
+		$query = mysqli_query($conn, "UPDATE topics SET hits ='$newHits' WHERE game='$game' AND topic = '$topic'");
+	}
+
+	function add_hits_to_game($conn, $game){
+		$query = mysqli_query($conn, "SELECT hits FROM games WHERE name='$game'");
+		$currentHits = mysqli_fetch_all($query, MYSQLI_ASSOC)[0]['hits']; 
+		$newHits = $currentHits+1;
+		$query = mysqli_query($conn, "UPDATE games SET hits ='$newHits' WHERE name = '$game'");
+	}
+
 
 	$website = get_website($conn);
 

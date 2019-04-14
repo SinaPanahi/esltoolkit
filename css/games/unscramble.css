@@ -1,0 +1,144 @@
+#u_game{
+	margin: 0;
+	padding: 0;
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: repeat(12, 1fr);
+	width: 100%;
+	height: 100%;
+}
+
+#u_score_board{
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 1em;
+	align-items: center;
+	text-align: center;
+
+	padding: 0 10px;
+	grid-column: span 12;
+	grid-row: span 2;
+
+}
+#u_mistakes, #u_time, #u_options{
+	display: block;
+	column-span: span 1;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 15px;
+	border: 3px solid gray;
+
+	background-color: white;
+	color: black;
+}
+
+#u_options{
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: 1fr;
+	grid-gap: 1em;
+}
+
+#u_music_button, #u_speech_button, #u_full_screen_button{
+
+	column-span: span 1;
+	width: 40px;
+	height: 40px;
+	border-radius: 15px;
+	margin: auto;
+	outline: none;
+
+	border: none;
+	background-color: white;
+
+}
+
+#u_music_button img, #u_speech_button img, #u_full_screen_button img{
+	width: 100%;
+	height: 100%;
+}
+
+#u_game_board{
+	display: grid;
+	grid-template-columns: repeat(10, 1fr);
+	grid-template-rows: repeat(10, 1fr);
+
+	padding: 0 10px;
+	grid-column: span 12;
+	grid-row: span 10;
+}
+
+#u_question, #u_answer{
+
+	grid-column: span 3;
+	grid-row: span 4;
+	grid-column-start: 2;
+	grid-column-end: 10;
+	align-items: center;
+	text-align: center;
+	height: 90%;
+	width: 100%;
+	margin: auto;
+	border-radius: 15px;
+	border: 3px solid gray;
+	font-size: 24px;
+	overflow: auto;
+	user-select: none;
+
+
+	background-color: rgba(234, 12, 125, 0.9);
+	color: white;
+}
+
+.item{
+	background-color: #fff693;
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 15px;
+	border: 3px solid gray;
+	color: black;
+	margin: 15px 2px 0 2px;
+	padding: 0 15px;
+	font-weight: 600;
+	font-size: 26px;
+}
+
+.item:hover{
+	background-color: #fffdc6;
+}
+
+#u_submit, #u_skip {
+	grid-row: span 4;
+	grid-column-start: 3;
+	grid-column-end: 6;
+	align-items: center;
+	text-align: center;
+	min-height: 40px;
+	height: 60%;
+	width: 80%;
+	margin: auto;
+	border-radius: 15px;
+	border: 3px solid gray;
+	font-size: 24px;
+	outline: none;
+
+
+	background-color: white;
+	color: purple;
+}
+
+ #u_skip{
+ 	grid-row: span 4;
+	grid-column-start: 6;
+	grid-column-end: 9;
+ }
+
+ #u_block{
+ 	position: absolute;
+ 	width: 100%;
+ 	height: 100%;
+ 	left: 0;
+ 	top: 0;
+ 	display: none;
+ }

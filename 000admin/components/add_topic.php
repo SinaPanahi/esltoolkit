@@ -86,6 +86,11 @@
 		//update put the name of the poster file in db
 		$qString = "UPDATE topics SET img = '$full_name' WHERE id='$id'";
 		$result = mysqli_query($conn, $qString);
+
+		$target_dir = "../imgs/games/".$game .'/'. $topic .'/';
+		if(!file_exists($target_dir)){
+			mkdir($target_dir);
+		}
 		
 	    if ($result && move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
 	    	show_message("Image Uploaded.", "success");
