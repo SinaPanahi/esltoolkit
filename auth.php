@@ -4,8 +4,8 @@
 	*/
 	//login information
 	$servername = 	"localhost";
-	$username = 	"Sina_Panahi";
-	$password = 	"Moradkandi1";
+	$username = 	"";
+	$password = 	"";
 	$db = 			"esltoolkit_2";
 
 ?>
